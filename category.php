@@ -1,0 +1,29 @@
+<?php get_header('splash'); ?>
+
+  <div id="primary" class="content-area extended">
+
+    <main id="main" class="site-main" role="main">
+
+	<h1><?php the_archive_title(); ?></h1>
+	<h1><?php single_cat_title( 'Category: ' ); ?></h1>
+	<p><?php echo category_description(); ?></p>
+	<?php esc_html_e('Posts Only!', 'wphierarchy'); ?>
+	<hr>
+
+	<?php if( have_posts() ) : while (have_posts() ) : the_post(); ?>
+
+		<?php get_template_part('template-parts/content-posts', get_post_format() ); ?>
+	
+	<?php endwhile; else : ?>
+	
+		<?php get_template_part('template-parts/content', 'none'); ?>
+
+	<?php endif; ?>
+
+	<p>Template: category.php</p>
+
+    </main>
+
+  </div>
+
+<?php get_footer('splash'); ?>
